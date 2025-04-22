@@ -1,0 +1,296 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>sign up</title>
+    <link rel="stylesheet" type="text/css" href="StyleSheet.css">
+
+    <style type="text/css">
+        
+
+        form {
+            margin-top: 180px;
+            margin-left: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        img {
+            width: 500px;
+        }
+        .image-container {
+            margin: 20px;
+            margin-top: 150px;
+            z-index: 800;
+        }
+
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: row;
+            align-items: center; 
+            justify-content: center; 
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .signup-container {
+            display: flex;
+            flex-direction: column;
+            margin-top: 180px;
+            margin-left: 20px;
+            z-index: 1;
+        }
+
+        .login-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+            .login-form h2 {
+                margin-bottom: 10px;
+            }
+
+            .login-form p {
+                font-size: 0.9em;
+                color: #333;
+                margin-bottom: 20px;
+            }
+
+        .input-group {
+            margin-bottom: 15px;
+           
+        }
+
+            .input-group label {
+                display: block;
+                margin-bottom: 5px;
+                color: black;
+            }
+
+            .input-group input {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                box-sizing: border-box; 
+            }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+            .checkbox-group input {
+                margin-right: 5px;
+            }
+
+            .checkbox-group label {
+                color: black;
+            }
+
+        .login-form button {
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #5c6bc0;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+            .login-form button:hover {
+                background-color: #3f51b5;
+            }
+
+        .forgot-password {
+            display: block;
+            margin-top: 10px;
+            text-align: center;
+            color: #3f51b5;
+            text-decoration: none;
+        }
+
+            .forgot-password:hover {
+                text-decoration: underline;
+            }
+
+           
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1><a href="ratemymusi homepage.html">Ratemymusic</a></h1>
+        <h2><a href="signup.html">Sign Up</a></h2>
+        <div class="scrollmenu">
+            <a href="ratemymusi homepage.html">Home</a>
+            <a href="charts.html">Charts</a>
+            <a href="collection.html">Collection</a>
+            <a href="forum.html">Forum</a>
+            <a href="about.html">About</a>
+        </div>
+    </div>
+
+    <div class="login-container">
+        <form class="login-form">
+            <h2>Log in</h2>
+            <p>If you are already registered, then please log in.</p>
+
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username">
+            </div>
+
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password">
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="remember" name="remember">
+                <label for="remember">Remember me</label>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="stay-logged" name="stay-logged">
+                <label for="stay-logged">Stay logged in on other devices</label>
+            </div>
+
+            <button type="submit">Log in >></button>
+
+            <a href="#" class="forgot-password">Forgot your password?</a>
+        </form>
+    </div>
+
+
+    <div class="image-container">
+        <img src="../listening.jpg" />
+    </div>
+
+
+    <div class="signup-container">
+
+        <form method="post" action="" name="AccountDetail" onsubmit="return checkForm()">
+            <h3>Don't have an account?</h3>
+
+            <p>With a Rate My Music account, you can:</p>
+
+            <ul>
+
+                <li><b>rate, review, catalog, and tag</b> your music</li>
+                <li>find new <b>music and people</b> through recommendations</li>
+                <li>create and publish <b>lists</b> of your favorite things</li>
+                <li><b>research</b> music, cross-referenced by label, artist, location, and genre.</li>
+                <li><b>socialize</b> through forums and private messaging</li>
+                <li><b>contribute</b> to an always-growing public music database</li>
+            </ul>
+            <h3>User Name</h3>
+            <label class="hidden" id="u_message">message</label> <br />
+            <input type="text" name="u_name" maxlength="15" onblur="return alertUserName()" oninput="clearNameLable()" />
+            <h3>Enter a password</h3>
+            <input type="password" name="password" maxlength="15" />
+            <h3>Please type it again</h3>
+            <input type="password" name="password_confirm" maxlength="15" />
+            <h3>Your email address</h3>
+            <input type="text" name="email" maxlength="25" />
+
+            <div style="clear:both;"></div> <br />
+            <input type="submit" name="submit" value="Sign Up" />
+        </form>
+
+    </div>
+
+
+
+
+    <script>
+        var illegalchars = /[^a-zA-Zא-ת]/;
+        var illeglnums = /[^0-9/-]/;
+        var mailfilter = /^([a-zA-Z0-9_\.\-])+\@([a-zA-Z0-9_\.\-])+\.([a-zA-Z0-9]{2,4})+$/;
+
+        function clearNameLable() {
+            document.getElementById("u_message").classList.add("hidden");
+        }
+        function alertUserName() {
+            var username = document.forms["AccountDetail"]["u_name"].value;
+            var usermsg = document.getElementById("u_message");
+
+            if (username == "") {
+                usermsg.classList.remove("hidden");
+                usermsg.innerText = "User Name must be entered";
+                return false;
+            }
+
+            if (username.length < 2) {
+                usermsg.classList.remove("hidden");
+                usermsg.innerText = "User name is too short";
+                return false;
+            }
+
+            if (illegalchars.test(username)) {
+                usermsg.classList.remove("hidden");
+                usermsg.innerText = "User Name is illegal";
+                return false;
+            }
+
+            usermsg.classList.add("hidden");
+            return true;
+        }
+        function checkForm() {
+            event.preventDefault();
+
+            /**********************/
+            /*   Check Username    */
+            /**********************/
+            var username = document.forms["AccountDetail"]["u_name"].value;
+
+            if (username == "") {
+                alert("User Name must be entered");
+                return false;
+            }
+
+            if (username.length < 2) {
+                alert("User name is too short");
+                return false;
+            }
+
+            if (illegalchars.test(username)) {
+                alert("User Name is illegal");
+                return false;
+            }
+
+            /**********************/
+            /*   Check E-mail    */
+            /**********************/
+            var email = document.forms["AccountDetail"]["email"].value
+            if (email == "") {
+                alert("E-mail must be entered");
+                return false;
+            }
+
+            if (!mailfilter.test(email)) {
+                alert("Wrong format of E-mail");
+                return false;
+            }
+
+            alert("User created successfuly! An E-mail has been sent for confirmation");
+            location.replace ("ratemymusi homepage.html")
+            
+        }
+
+
+    </script>
+
+</body>
+</html>

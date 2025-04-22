@@ -1,0 +1,241 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Charts</title>
+    <link rel="stylesheet" type="text/css" href="StyleSheet.css">
+    <style type="text/css">
+        body {
+            position: relative;
+            padding-top: 180px;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+            body::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-image: url("../loveless.jpg");
+                background-repeat: no-repeat;
+                background-size: cover;
+                opacity: 0.45; 
+                z-index: -1;
+            }
+        .charts {
+            margin-left: 40px;
+            margin-top: 20px;
+        }
+
+        .album-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .content-container {
+            display: flex;
+            justify-content: center; 
+            align-items: start; 
+            gap: 20px; 
+        }
+
+        .select-area {
+            flex-basis: 55%; 
+        }
+
+        .album-covers {
+            display: flex;
+            flex-direction: column; 
+            flex-basis: 70%; 
+            margin-left: 40px;
+        }
+
+        .album-cover {
+            margin-left: 20px;
+            margin-top: 20px;
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+
+        .album-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1><a href="ratemymusi homepage.html"</a>Ratemymusic</h1>
+        <h2>
+            <a href="signup.html">sign up</a>
+        </h2>
+        <div class="scrollmenu">
+            <a href="ratemymusi homepage.html">Home</a>
+            <a href="charts.html">Charts</a>
+            <a href="collection.html">Collection</a>
+            <a href="forum.html">Forum</a>
+            <a href="about.html">About</a>
+        </div>
+    </div>
+
+    <div class="content-container">
+        <div class="select-area">
+
+            <div class="charts">
+                <h2 font-family:centaur; font-size="180%">Create your own charts, and find new music from all genres and eras!</h2>
+                <fieldset>
+                    <p> Select Year</p>
+                    <input type="radio" name="year" value="alltime" /> All-time
+                    <br />
+                    <input type="radio" name="year" value="specific" /> Specific decade
+                    <br />
+                    <input type="radio" name="year" value="range" /> Year Range
+
+                    <div id="specificYearDiv" style="display:none;">
+                        <select name="specificYear">
+                            <option value="">Select Decade</option>
+                            <option value="1950-1959">1950s</option>
+                            <option value="1960-1969">1960s</option>
+                            <option value="1970-1979">1970s</option>
+                            <option value="1980-1989">1980s</option>
+                            <option value="1990-1999">1990s</option>
+                            <option value="2000-2009">2000s</option>
+                            <option value="2010-2019">2010s</option>
+                            <option value="2020-2024">2020-2024</option>
+                        </select>
+                    </div>
+                    <div id="RangeYearDiv" style="display:none;">
+                        <label for="startYear">Start Year:</label>
+                        <input type="number" id="startYear" name="startYear" />
+                        <label for="endYear">End Year:</label>
+                        <input type="number" id="endYear" name="endYear" />
+
+                    </div>
+
+                    <p>Select Genre(s):</p>
+                    <select name="Genre" multiple>
+                        <option value="all">All Genres</option>
+                        <option value="Rock">Rock</option>
+                        <option value="Electronic">Electronic</option>
+                        <option value="Pop">Pop</option>
+                        <option value="Folk">Folk</option>
+                        <option value="Hop Hop">Hop Hop</option>
+                        <option value="Jazz">Jazz</option>
+                        <option value="Soul">Soul</option>
+                        <option value="Metal">Metal</option>
+                        <option value="Soundtracks">Soundtracks</option>
+                    </select>
+                    <br />
+
+                    <p> <input type="submit" id="updateChartBtn" value="Update Chart" /> </p>
+                </fieldset>
+
+            </div>
+                    <div id="albumCovers" class="album-covers">
+
+
+                    </div>
+
+
+            </div>
+        </div>
+        <script>
+
+            const bestAlbums = [
+                { number: "1.", imgsrc: "../loveless.jpg", title: "Loveless", artist: "Artist: My Bloody Valentine", genre: "Genre: Shoegaze, Noise Pop" },
+                { number: "2.", imgsrc: "../abbey.jpg", title: "Abbey Road", artist: "Artist: The Beatles", genre: "Genre: Pop-Rock" },
+                { number: "3.", imgsrc: "../lift.jpg", title: "Lift Your Skinny Fists like Antenas to Heaven", artist: "Artist: Godspeed You! Black Emperor", genre: "Genre: Post-Rock, Experimental Rock" },
+                { number: "4.", imgsrc: "../miles.jpeg", title: "A Kind of Blue", artist: "Artist: Miles Davis", genre: "Genre: Modal Jazz, Cool Jazz" },
+                { number: "5.", imgsrc: "../okc.jpg", title: "OK Computer", artist: "Artist: Radiohead", genre: "Genre: Alternative Rock" },
+                { number: "6.", imgsrc: "../tpab.jpg", title: "To Pimp a Butterfly", artist: "Artist: Kendrick Lamar", genre: "Genre: Conscious Hip Hop, West Coast Hip Hop, Jazz Rap" },
+                { number: "7.", imgsrc: "../wish.jpg", title: "Wish You Were Here", artist: "Artist: Pink Floyd", genre: "Genre: Progressive Rock, Art Rock" },
+                { number: "8.", imgsrc: "../wonder.jpg", title: "Songs in the Key of Life", artist: "Artist: Stevie Wonder", genre: "Genre: Soul" },
+                { number: "9.", imgsrc: "../ziggy.jpg", title: "Ziggy Stardust", artist: "Artist: David Bowie", genre: "Genre: Glam Rock, Pop Rock" },
+                { number: "10.", imgsrc: "../kate.jpg", title: "Hounds of Love", artist: "Artist: Kate Bush", genre: "Genre: Art Pop, Progressive Pop" },
+
+            ];
+            document.querySelectorAll('input[type=radio][name=year]').forEach(function (radio) {
+                radio.addEventListener('change', function () {
+                    if (this.value === 'specific') {
+                        document.getElementById('specificYearDiv').style.display = 'block';
+                        document.getElementById('RangeYearDiv').style.display = 'none';
+                    } else if (this.value === 'range') {
+                        document.getElementById('specificYearDiv').style.display = 'none';
+                        document.getElementById('RangeYearDiv').style.display = 'block';
+                    } else {
+                        document.getElementById('specificYearDiv').style.display = 'none';
+                        document.getElementById('RangeYearDiv').style.display = 'none';
+                    }
+                });
+            });
+
+            document.getElementById('updateChartBtn').addEventListener('click', function (event) {
+                event.preventDefault();
+                const yearSelection = document.querySelector('input[type=radio][name=year]:checked').value;
+                const genreSelection = document.querySelector('select[name="Genre"]').value;
+
+                if (yearSelection === 'alltime' && genreSelection === 'all') {
+                    updateAlbumCovers();
+                }
+            });
+
+            function updateAlbumCovers() {
+                const albumCoversDiv = document.getElementById('albumCovers');
+                albumCoversDiv.innerHTML = '';
+
+                bestAlbums.forEach(function (cover) {
+                    // Flex Container
+                    const albumDiv = document.createElement('div');
+                    albumDiv.classList.add('album-container');
+
+                    //numbered item
+                    const numberElement = document.createElement('h2');
+                    numberElement.innerText = cover.number;
+                    albumDiv.appendChild(numberElement);
+
+                    // Image
+                    const img = document.createElement('img');
+                    img.classList.add('album-cover');
+                    img.src = cover.imgsrc;
+                    img.alt = cover.title;
+                    albumDiv.appendChild(img);
+
+                    // Album Info
+                    const infoDiv = document.createElement('div');
+                    infoDiv.classList.add('album-info');
+
+                    const titleElement = document.createElement('h3');
+                    titleElement.innerText = cover.title;
+                    infoDiv.appendChild(titleElement);
+
+                    const artistElement = document.createElement('p');
+                    artistElement.innerText = cover.artist;
+                    infoDiv.appendChild(artistElement);
+
+                    const genreElement = document.createElement('p');
+                    genreElement.innerText = cover.genre;
+                    infoDiv.appendChild(genreElement);
+
+                    // Append the infoDiv to albumDiv
+                    albumDiv.appendChild(infoDiv);
+
+                    // Append the albumDiv to the albumCoversDiv
+                    albumCoversDiv.appendChild(albumDiv);
+                });
+            }
+
+
+
+
+        </script>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+﻿/* StyleSheet.css */
+
+
+.header {
+    position: fixed;
+    text-align: center;
+    top: 0;
+    width: 100%;
+    background-color: #333;
+    z-index: 999;
+}
+
+    .header h1 a {
+        display: inline-block;
+        margin: 0;
+        padding: 10px 20px;
+        color: white;
+        text-align: center;
+        font-size: 30px;
+        text-decoration: none;
+    }
+
+    .header h2 a {
+        display: inline-block;
+        float: right;
+        margin: 0;
+        padding: 10px 20px;
+        color: white;
+        text-align: right;
+        font-size: 24px;
+        text-decoration: none;
+    }
+
+div .scrollmenu {
+    text-align: left;
+    background-color: #333;
+    overflow: auto;
+    white-space: nowrap;
+    padding: 10px 0;
+    position: relative;
+    z-index: 1;
+}
+
+    div.scrollmenu a {
+        display: inline-block;
+        color: white;
+        margin-left: 30px;
+        text-align: center;
+        padding: 14px;
+        text-decoration: none;
+    }
+
+        div.scrollmenu a:hover {
+            background-color: #777;
+        }
+
+a {
+    text-decoration: none;
+}
+
+label{
+    
+    color: red;
+}
+ .hidden{
+    display:none;
+}
